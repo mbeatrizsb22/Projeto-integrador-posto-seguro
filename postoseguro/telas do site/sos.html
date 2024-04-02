@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerta Enviado</title>
+    <style>
+        body {
+            background-color: #ff0000;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+        }
+
+        .alert {
+            padding: 20px;
+            background-color: #990000;
+            color: white;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+       
+        .chat-button {
+            background-color: #ffffff;
+            color: #ff0000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .batepapo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="alert">
+        <h1>Seu alerta foi enviado para os postos mais próximos.</h1>
+    </div>
+    <div class="batepapo">
+        <p>Deseja ir para o bate-papo?</p>
+        <button class="chat-button" onclick="window.location.href='batepapo.html'">Ir para o Bate-Papo</button>
+    </div>
+</body>
+</html>

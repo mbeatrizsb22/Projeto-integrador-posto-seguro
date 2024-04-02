@@ -1,0 +1,115 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+background-image: url(posto.jpg);
+background-position: center;
+background-size: cover;
+font-family: sans-serif;
+margin-top: 40px;
+color:white;
+}
+.registroformulario
+{
+    width: 800px;
+    background-color: black;
+    margin: auto;
+    color: white;
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+    border-radius: 15px 15px 0px 0px;
+    box-shadow: inset 0 0 1em red;
+}
+.conteudo
+{
+    background-color: rgb(0,0,0,0.6);
+    width: 800px;
+    margin: auto;
+}
+form
+{
+    padding: 10px;
+}
+#nome
+ {
+    width: 100%;
+    height: 100px;
+ }
+ .nome
+ {
+    margin-left:25px;
+    margin-top: 30px;
+    width: 125px;
+    color:white;
+    font-size: 18px;
+    font-weight: 700;
+ }
+ .PrimeiroNome
+ {
+    position: relative;
+    left: 200px;
+    top:-37px
+    line: height 40px;
+    padding: 0 22px;
+    font-size: 16px
+ }
+ .Sobrenome
+ {
+    position: relative;
+    left: 417px;
+    top:-80px
+    line: height 40px;
+    padding: 0 22px;
+    font-size: 16px
+    color:#555;
+ }
+ .Primeirolabel
+ {
+    position: relative;
+    color: #e5e5e5;
+    text-transform:capitalize;
+    font-size: 14px;
+    left: 203px;
+    top:-45px;
+ }
+ .Sobrenomelabel
+ {
+    position: relative;
+    color: #e5e5e5;
+    text-transform: capitalize;
+    font-size: 14px;
+    left: 169px;
+    top:-45px;
+ }
+ .CidadeeEstado
+ {
+    position: relative;
+    left: 200px;
+    top: -37px;
+    line-height: 40px;
+    width: 468px;
+    border-radius: 6px;
+    padding: 0 22px;
+    font-size: 16px;
+    color: #555;
+ }
+ .botao-enviar {
+   background-color: red;
+   color: white;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   font-size: 16px;
+ }
+ .botao-enviar a{
+   text-decoration: none;
+   color: white;
+ }
+
+ .botao-enviar:hover {
+   background-color: #45a049;
+ }
