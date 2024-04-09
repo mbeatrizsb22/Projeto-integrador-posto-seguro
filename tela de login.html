@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Posto Seguro</title>
+    <script src="firebase.js" defer type="module"></script>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-box h1 {
+    color: #d93025;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.login-box form {
+    margin-top: 40px;
+}
+
+.login-box input {
+    width: 80%;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.login-box input:focus {
+    outline: none;
+    border-color: #d93025;
+}
+
+.login-box button {
+    width: 80%;
+    height: 40px;
+    background-color: #d93025;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #c9271e;
+}
+
+.login-google {
+    margin-top: 40px;
+}
+
+.login-google p {
+    color: #999;
+    font-size: 14px;
+}
+
+.login-google a {
+    display: block;
+    margin-top: 10px;
+}
+
+.login-google img {
+    width: 200px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h1>Login</h1>
+            <form action="#">
+                <input type="text" placeholder="Usuário" required>
+                <input type="password" placeholder="Senha" required>
+                <button onclick="login()">Entrar</button>
+            </form>
+            <div class="login-google">
+                <p>Ou faça login com o Google</p>
+                <a href="#">
+                    <img src="https://www.gstatic.com/firebasejs/ui/4.12.0/images/auth/google.svg" id="google-login-btn" alt="Login com Google">
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
