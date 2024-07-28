@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>AVALIAÇÃO</title.></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://afeld.github.io/emoji-css/emoji.css'><link rel="stylesheet" href="avaliação.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+<form class="rating">
+  <h3 class="rating__title">AVALIAÇÃO
+    <div class="rating__list">
+      <div class="rating__item">
+        <input class="rating__input rating--1" id="rating-1-2" type="radio" value="1" name="rating"/>
+        <label class="rating__label rating--1" for="rating-1-2"><i class="em em-angry"></i></label>
+      </div>
+      <div class="rating__item">
+        <input class="rating__input rating--2" id="rating-2-2" type="radio" value="2" name="rating"/>
+        <label class="rating__label rating--2" for="rating-2-2"><i class="em em-disappointed"></i></label>
+      </div>
+      <div class="rating__item">
+        <input class="rating__input rating--3" id="rating-3-2" type="radio" value="3" name="rating"/>
+        <label class="rating__label rating--3" for="rating-3-2"><i class="em em-expressionless"></i></label>
+      </div>
+      <div class="rating__item">
+        <input class="rating__input rating--4" id="rating-4-2" type="radio" value="4" name="rating"/>
+        <label class="rating__label rating--4" for="rating-4-2"><i class="em em-grinning"></i></label>
+      </div>
+      <div class="rating__item">
+        <input class="rating__input rating--5" id="rating-5-2" type="radio" value="5" name="rating"/>
+        <label class="rating__label rating--5" for="rating-5-2"><i class="em em-star-struck"></i></label>
+      </div>
+    </div>
+  </h3>
+  <div class="feedback">
+    <textarea placeholder="Deixe seu comentario sobre o posto"></textarea>
+    <input type="text" placeholder="Email"/>
+    <button class="submit">Enviar Feedback</button>
+  </div>
+</form>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script  src="avaliação.js"></script>
+
+</body>
+</html>
