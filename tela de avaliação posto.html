@@ -1,323 +1,341 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>avaliação</title>
-    <link rel="stylesheet" href="inicial.css">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-
-    
-    <link href='style.css'  rel='stylesheet'>
-    <link href='fonts-icones.css'  rel='stylesheet'>
-    
-    <style>
-        .td{
-            display: flex;
-            justify-content: space-around;
-        }
-           
-        .avaliar-btn{
-            background-color: #d32c2c;
-        }
-        
-        .p{
-            display: flex;
-            flex-direction: column;
-            margin: 15px;
-        }
-        
-        .avaliacao{
-            display: flex;
-            right: 19px;  
-        }
-
-        .star-icon{
-            list-style-type: none;
-            border: 1px solid #F4E9ED;
-            cursor: pointer;
-            color: #ffe500;
-            font-size: 30px;
-            flex-direction: row;
-        }
-
-        .star-icon::before{
-            content: "\2605";
-        }
-
-        .star-icon.ativo ~ .star-icon::before{
-            content: "\2606";
-        }
-
-        .avaliacao:hover .star-icon::before{
-            content: "\2605";
-        }
-
-        .star-icon:hover ~ .star-icon::before{
-            content: "\2606";
-        }
-
-      
-    </style>
-
+    <title>Posto Seguro</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<nav>
-    <div class="navbar">
-      <i class='bx bx-menu'></i>
-      <div class="logo"> 
-        <img src="unnamed2.png" width="100" height="75" alt="">
-    </div>
-      <div class="nav-links">
-        <div class="sidebar-logo">
-          <span class="logo-name">LOGOTIPO</span>
-          <i class='bx bx-x' ></i>
-        </div>
-        <ul class="links">
-          <li><a href="pagina inicial.html">HOME</a></li>
-          <li>
-            <a href="#">CONTA</a>
-            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
-            <ul class="htmlCss-sub-menu sub-menu">
-              <li><a href="Cadastro pessoal.html">CASDASTRAR-SE</a></li>
-              <li><a href="cadastrar posto.html">CASDASTRAR POSTO</a></li>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">PERTO DE VOCE</a>
-            <i class='bx bxs-chevron-down js-arrow arrow '></i>
-            <ul class="js-sub-menu sub-menu">
-              <li><a href="tela de avaliação.html">POSTOS</a></li>
-              <li><a href="tela de avaliação2.html">HOTEIS</a></li>
-            </ul>
-          </li>
-      </div>
-      <div class="search-box">
-        <i class='bx bx-search'></i>
-        <div class="input-box">
-          <input type="text" placeholder="Search...">
-        </div>
-      </div>
-    </div>  
-  </nav>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #b22222;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    padding: 1rem;
+}
+
+#postos {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.posto {
+    border: 1px solid #b22222;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.avaliar-btn {
+    background-color: #b22222;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+.avaliar-btn:hover {
+    background-color: #a02020;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.avaliacao-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.avaliacao-form input[type="text"],
+.avaliacao-form textarea {
+    margin-bottom: 0.5rem;
+}
+
+.stars {
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.stars span {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.stars span:hover,
+.stars span.selected {
+    color: #b22222;
+}
+
+button {
+    background-color: #b22222;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a02020;
+}
+</style>
 <body>
-    <div class="td">
-    <div class="p">
-        <img src="hotel.jpg" width="150" height="150">
-        <h4>POSTO</h4>
-        <ul class="avaliacao">
-            <li class="star-icon ativo" data-avaliacao="1"></li>
-            <li class="star-icon" data-avaliacao="2"></li> 
-            <li class="star-icon" data-avaliacao="3"></li>
-            <li class="star-icon" data-avaliacao="4"></li>
-            <li class="star-icon" data-avaliacao="5"></li> 
-        </ul>
-        <button class="avaliar-btn" data-posto="Posto A">Avaliar</button>
-</div>
-<div class="p">
-    <img src="hotel.jpg" width="150" height="150">
-    <h4>POSTO</h4>
-    <ul class="avaliacao">
-        <li class="star-icon ativo" data-avaliacao="1"></li>
-        <li class="star-icon" data-avaliacao="2"></li> 
-        <li class="star-icon" data-avaliacao="3"></li>
-        <li class="star-icon" data-avaliacao="4"></li>
-        <li class="star-icon" data-avaliacao="5"></li> 
-    </ul>
-    <button class="avaliar-btn" data-posto="Posto A">Avaliar</button>
-</div>
-<div class="p">
-    <img src="hotel2.jpg" width="150" height="150">
-    <h4>POSTO</h4>
-    <ul class="avaliacao">
-        <li class="star-icon ativo" data-avaliacao="1"></li>
-        <li class="star-icon" data-avaliacao="2"></li> 
-        <li class="star-icon" data-avaliacao="3"></li>
-        <li class="star-icon" data-avaliacao="4"></li>
-        <li class="star-icon" data-avaliacao="5"></li> 
-    </ul>
-    <button class="avaliar-btn" data-posto="Posto A">Avaliar</button>
-</div>
-<div class="p">
-    <img src="hotel.jpg" width="150" height="150">
-    <h4>POSTO</h4>
-    <ul class="avaliacao">   
-        <li class="star-icon ativo" data-avaliacao="1"></li>
-        <li class="star-icon" data-avaliacao="2"></li> 
-        <li class="star-icon" data-avaliacao="3"></li>
-        <li class="star-icon" data-avaliacao="4"></li>
-        <li class="star-icon" data-avaliacao="5"></li> 
-    </ul>
-    <button class="avaliar-btn" data-posto="Posto A">Avaliar</button>
+    <header>
+        <h1>Posto Seguro</h1>
+    </header>
+    <main>
+        <section id="postos">
+            <h2>Postos Disponíveis</h2>
+            <div class="posto">
+                <h3>Posto Vale do Guaribas</h3>
+                <img src="posto vale do guaribas.jpeg" width="500">
+                <p>Av. Piauí, s/n - Junco, Picos - PI, 64607-840</p>
+                <button class="avaliar-btn" data-posto="posto-1">Avaliar</button>
+                <div class="avaliacoes">
+                    <h4>Avaliações</h4>
+                    <ul id="avaliacoes-posto-1"></ul>
+                </div>
+            </div>
+            <!-- Adicione mais postos conforme necessário -->
+        </section>
+    </main>
 
-
-
-
-
-</div>
-
-</div>
-
-
-
-<div class="td">
-    <div class="p">
-        <img src="hotel2.jpg" width="150" height="150">
-        <h4>POSTO</h4>
-
-        <ul class="avaliacao">
-        
-            <li class="star-icon ativo" data-avaliacao="1"></li>
-            <li class="star-icon" data-avaliacao="2"></li> 
-            <li class="star-icon" data-avaliacao="3"></li>
-            <li class="star-icon" data-avaliacao="4"></li>
-            <li class="star-icon" data-avaliacao="5"></li> 
-        </ul>
-        <button class="avaliar-btn" data-posto="Posto A">Avaliar</button>
-    
-
-
-
-    
-</div>
-
-
-<div class="p">
-    <img src="hotel.jpg" width="150" height="150">
-    <h4>POSTO</h4>
-
-    <ul class="avaliacao">
-    
-        <li class="star-icon ativo" data-avaliacao="1"></li>
-        <li class="star-icon" data-avaliacao="2"></li> 
-        <li class="star-icon" data-avaliacao="3"></li>
-        <li class="star-icon" data-avaliacao="4"></li>
-        <li class="star-icon" data-avaliacao="5"></li> 
-    </ul>
-    <button class="avaliar-btn" data-posto="Posto A">Avaliar</button>
-
-
-</div>
-
-<div class="p">
-    <img src="hotel2.jpg" width="150" height="150">
-    <h4>POSTO</h4>
-
-    <ul class="avaliacao">
-    
-        <li class="star-icon ativo" data-avaliacao="1"></li>
-        <li class="star-icon" data-avaliacao="2"></li> 
-        <li class="star-icon" data-avaliacao="3"></li>
-        <li class="star-icon" data-avaliacao="4"></li>
-        <li class="star-icon" data-avaliacao="5"></li> 
-    </ul>
-    <button class="avaliar-btn" data-posto="Posto A">Avaliar</button>
-
-</div>
-
-<div class="p">
-    <img src="hotel2.jpg" width="150" height="150">
-    <h4>POSTO</h4>
-
-    <ul class="avaliacao">
-    
-        <li class="star-icon ativo" data-avaliacao="1"></li>
-        <li class="star-icon" data-avaliacao="2"></li> 
-        <li class="star-icon" data-avaliacao="3"></li>
-        <li class="star-icon" data-avaliacao="4"></li>
-        <li class="star-icon" data-avaliacao="5"></li> 
-    </ul>
-    <button class="avaliar-btn" data-posto="Posto A">Avaliar</button>
-
-
-
-
-
-</div>
-
-</div>
-
-
-
-<footer class="main_footer container">
-    
-    <div class="content">
-
-        <div class="colfooter">
-            
-            <h3 class="titleFooter"> Menu</h3>
-            
-            <ul>
-            
-              <li><a href="#" title="Página Inícial">Página Inícial</a></li>
-              <li><a href="#" title="Sobre a Empresa">Sobre a Empresa</a></li>
-              <li><a href="#" title="Galeria de Fotos">FAqs</a></li>
-              <li><a href="#" title="Fale Conosco">Fale Conosco</a></li>
-            
-            </ul>
-
-        </div><!--Col Footer 1-->        
-
-        <div class="colfooter">
-           
-           <h3 class="titleFooter"> Contato</h3>
-           <p><i class="icon icon-mail"></i> Postosseguro@gmail.com.br</p>
-           <p><i class="icon icon-phone"></i> 21 90000-0000</p>
-           <p><i class="icon icon-whatsapp"></i> 21 90000-0000</p>
-
-        </div><!--Col Footer 2-->
-
-        <div class="colfooter">
-           
-           <h3 class="titleFooter"> Redes Sociais</h3>
-            
-           <a href="#" class="botao"><span> <i class="icon icon-facebook"></i> </span></a>            
-           <a href="https://www.instagram.com/postoseguro_/" class="botao"><span> <i class="icon icon-instagram"></i> </span></a>            
-           <a href="#" class="botao"><span> <i class="icon icon-twitter"></i> </span></a>            
-           <a href="#" class="botao"><span> <i class="icon icon-pinterest"></i> </span></a>            
-
-        </div><!--Col Footer 3-->
-
-
-        <div class="clear"></div>
-    
-    </div><!--Contant-->
-
-    <div class="main_footer_copy">
-        
-        <p class="m-b-footer"> Posto seguro - 2022, todos os direitos reservados.</p> 
-        <p class="by"><i class="icon icon-heart-3"></i> Desenvolvido por: <a href="#" title="Seu nome">Beatriz Coelho</a></p>
-    
+    <div id="avaliacao-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Posto Vale do Guaribas</h2>
+            <form class="avaliacao-form" id="avaliacao-form">
+                <input type="text" placeholder="Seu nome" required>
+                <textarea placeholder="Escreva sua avaliação" required></textarea>
+                <div class="stars">
+                    <span data-value="1">&#9733;</span>
+                    <span data-value="2">&#9733;</span>
+                    <span data-value="3">&#9733;</span>
+                    <span data-value="4">&#9733;</span>
+                    <span data-value="5">&#9733;</span>
+                </div>
+                <input type="hidden" name="rating" required>
+                <button type="submit">Enviar Avaliação</button>
+            </form>
+        </div>
     </div>
 
-</footer>
+    <main>
+        <section id="postos">
+            <div class="posto">
+                <h3>Posto Mamba</h3>
+                <img src="posto mamba.jpeg" width="500">
+                <p>Av. Senador Helvídio Nunes - Paraibinha, Picos - PI, 64606-245</p>
+                <button class="avaliar-btn" data-posto="posto-1">Avaliar</button>
+                <div class="avaliacoes">
+                    <h4>Avaliações</h4>
+                    <ul id="avaliacoes-posto-1"></ul>
+                </div>
+            </div>
+            <!-- Adicione mais postos conforme necessário -->
+        </section>
+    </main>
 
+    <div id="avaliacao-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Posto Mamba</h2>
+            <form class="avaliacao-form" id="avaliacao-form">
+                <input type="text" placeholder="Seu nome" required>
+                <textarea placeholder="Escreva sua avaliação" required></textarea>
+                <div class="stars">
+                    <span data-value="1">&#9733;</span>
+                    <span data-value="2">&#9733;</span>
+                    <span data-value="3">&#9733;</span>
+                    <span data-value="4">&#9733;</span>
+                    <span data-value="5">&#9733;</span>
+                </div>
+                <input type="hidden" name="rating" required>
+                <button type="submit">Enviar Avaliação</button>
+            </form>
+        </div>
+    </div>
 
-<script>
-    document.addEventListener('click', function(e){
-        var stars = e.target.parentElement.getElementsByClassName('star-icon');
-        stars=Array.from(stars);
+    <main>
+        <section id="postos">
+            <div class="posto">
+                <h3>Posto Dois Amores</h3>
+                <img src="posto dois amores.jpg" width="500">
+                <p>Rua Estrada de Santos, S/n - Bomba, Picos - PI, 64600-000</p>
+                <button class="avaliar-btn" data-posto="posto-1">Avaliar</button>
+                <div class="avaliacoes">
+                    <h4>Avaliações</h4>
+                    <ul id="avaliacoes-posto-1"></ul>
+                </div>
+            </div>
+            <!-- Adicione mais postos conforme necessário -->
+        </section>
+    </main>
 
-        var classStar = e.target.classList;
-
-        if(!classStar.contains('ativo') && classStar.contains('star-icon')){
-            stars.forEach(function(star){
-                star.classList.remove('ativo');
-
-            });
-
-            classStar.add('ativo');
-        }
-
-    });
-       
-        
-
-    
-
-
-    
-       
-</script>
+    <div id="avaliacao-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Posto Dois Amores</h2>
+            <form class="avaliacao-form" id="avaliacao-form">
+                <input type="text" placeholder="Seu nome" required>
+                <textarea placeholder="Escreva sua avaliação" required></textarea>
+                <div class="stars">
+                    <span data-value="1">&#9733;</span>
+                    <span data-value="2">&#9733;</span>
+                    <span data-value="3">&#9733;</span>
+                    <span data-value="4">&#9733;</span>
+                    <span data-value="5">&#9733;</span>
+                </div>
+                <input type="hidden" name="rating" required>
+                <button type="submit">Enviar Avaliação</button>
+            </form>
+        </div>
+    </div>
 </body>
+<script>
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+    loadAvaliacoes();
+
+    document.querySelectorAll('.avaliar-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const postoId = this.dataset.posto;
+            document.getElementById('avaliacao-form').dataset.posto = postoId;
+            document.getElementById('avaliacao-modal').style.display = 'block';
+        });
+    });
+
+    document.querySelector('.close-btn').addEventListener('click', function() {
+        document.getElementById('avaliacao-modal').style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === document.getElementById('avaliacao-modal')) {
+            document.getElementById('avaliacao-modal').style.display = 'none';
+        }
+    });
+
+    document.querySelector('.avaliacao-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const postoId = event.target.dataset.posto;
+        const nome = event.target.querySelector('input[type="text"]').value;
+        const texto = event.target.querySelector('textarea').value;
+        const rating = event.target.querySelector('input[name="rating"]').value;
+
+        const avaliacao = {
+            nome: nome,
+            texto: texto,
+            rating: rating
+        };
+
+        saveAvaliacao(postoId, avaliacao);
+        event.target.querySelector('input[type="text"]').value = '';
+        event.target.querySelector('textarea').value = '';
+        clearStars(event.target);
+        document.getElementById('avaliacao-modal').style.display = 'none';
+    });
+
+    document.querySelectorAll('.avaliacao-form .stars span').forEach(star => {
+        star.addEventListener('click', function() {
+            const rating = this.dataset.value;
+            const form = this.closest('form');
+            form.querySelector('input[name="rating"]').value = rating;
+            highlightStars(form, rating);
+        });
+    });
+});
+
+function loadAvaliacoes() {
+    document.querySelectorAll('.avaliacoes ul').forEach(ul => {
+        const postoId = ul.id.split('-')[2];
+        const avaliacoes = JSON.parse(localStorage.getItem(postoId) || '[]');
+        avaliacoes.forEach(avaliacao => {
+            addAvaliacaoToList(ul, avaliacao);
+        });
+    });
+}
+
+function saveAvaliacao(postoId, avaliacao) {
+    const avaliacoes = JSON.parse(localStorage.getItem(postoId) || '[]');
+    avaliacoes.push(avaliacao);
+    localStorage.setItem(postoId, JSON.stringify(avaliacoes));
+    const ul = document.getElementById(`avaliacoes-${postoId}`);
+    addAvaliacaoToList(ul, avaliacao);
+}
+
+function addAvaliacaoToList(ul, avaliacao) {
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>${avaliacao.nome}</strong>: ${avaliacao.texto} - ${renderStars(avaliacao.rating)}`;
+    ul.appendChild(li);
+}
+
+function renderStars(rating) {
+    let stars = '';
+    for (let i = 0; i < 5; i++) {
+        stars += i < rating ? '&#9733;' : '&#9734;';
+    }
+    return stars;
+}
+
+function highlightStars(form, rating) {
+    form.querySelectorAll('.stars span').forEach(star => {
+        star.classList.remove('selected');
+    });
+    for (let i = 0; i < rating; i++) {
+        form.querySelectorAll('.stars span')[i].classList.add('selected');
+    }
+}
+
+function clearStars(form) {
+    form.querySelectorAll('.stars span').forEach(star => {
+        star.classList.remove('selected');
+    });
+}
+</script>
 </html>
