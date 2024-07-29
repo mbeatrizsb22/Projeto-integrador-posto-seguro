@@ -132,7 +132,7 @@ button:hover {
     <main>
         <section id="postos">
             <h2>Postos Disponíveis</h2>
-            <div class="posto">
+            <div class="posto" id="posto-1">
                 <h3>Posto Vale do Guaribas</h3>
                 <img src="posto vale do guaribas.jpeg" width="500">
                 <p>Av. Piauí, s/n - Junco, Picos - PI, 64607-840</p>
@@ -168,14 +168,14 @@ button:hover {
 
     <main>
         <section id="postos">
-            <div class="posto">
+            <div class="posto" id="posto-2">
                 <h3>Posto Mamba</h3>
                 <img src="posto mamba.jpeg" width="500">
                 <p>Av. Senador Helvídio Nunes - Paraibinha, Picos - PI, 64606-245</p>
-                <button class="avaliar-btn" data-posto="posto-1">Avaliar</button>
+                <button class="avaliar-btn" data-posto="posto-2">Avaliar</button>
                 <div class="avaliacoes">
                     <h4>Avaliações</h4>
-                    <ul id="avaliacoes-posto-1"></ul>
+                    <ul id="avaliacoes-posto-2"></ul>
                 </div>
             </div>
             <!-- Adicione mais postos conforme necessário -->
@@ -204,14 +204,14 @@ button:hover {
 
     <main>
         <section id="postos">
-            <div class="posto">
+            <div class="posto" id="posto-3">
                 <h3>Posto Dois Amores</h3>
                 <img src="posto dois amores.jpg" width="500">
                 <p>Rua Estrada de Santos, S/n - Bomba, Picos - PI, 64600-000</p>
-                <button class="avaliar-btn" data-posto="posto-1">Avaliar</button>
+                <button class="avaliar-btn" data-posto="posto-3">Avaliar</button>
                 <div class="avaliacoes">
                     <h4>Avaliações</h4>
-                    <ul id="avaliacoes-posto-1"></ul>
+                    <ul id="avaliacoes-posto-3"></ul>
                 </div>
             </div>
             <!-- Adicione mais postos conforme necessário -->
@@ -219,7 +219,7 @@ button:hover {
     </main>
 
     <div id="avaliacao-modal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" id="posto-4">
             <span class="close-btn">&times;</span>
             <h2>Posto Dois Amores</h2>
             <form class="avaliacao-form" id="avaliacao-form">
@@ -237,9 +237,152 @@ button:hover {
             </form>
         </div>
     </div>
+
+    <main>
+        <section id="postos">
+            <div class="posto" id="posto-4">
+                <h3>Shell - Posto Papai Noel</h3>
+                <img src="posto shell.jpg" width="500">
+                <p>Av. Senador Helvídio Nunes, 3219 - Junco, Picos - PI, 64600-000</p>
+                <button class="avaliar-btn" data-posto="posto-4">Avaliar</button>
+                <div class="avaliacoes">
+                    <h4>Avaliações</h4>
+                    <ul id="avaliacoes-posto-4"></ul>
+                </div>
+            </div>
+            <!-- Adicione mais postos conforme necessário -->
+        </section>
+    </main>
+
+    <div id="avaliacao-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Shell - Posto Papai Noel</h2>
+            <form class="avaliacao-form" id="avaliacao-form">
+                <input type="text" placeholder="Seu nome" required>
+                <textarea placeholder="Escreva sua avaliação" required></textarea>
+                <div class="stars">
+                    <span data-value="1">&#9733;</span>
+                    <span data-value="2">&#9733;</span>
+                    <span data-value="3">&#9733;</span>
+                    <span data-value="4">&#9733;</span>
+                    <span data-value="5">&#9733;</span>
+                </div>
+                <input type="hidden" name="rating" required>
+                <button type="submit">Enviar Avaliação</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section id="postos">
+            <div class="posto" id="posto-5">
+                <h3>Posto P da Silva</h3>
+                <img src="posto p da silva.jpg" width="500">
+                <p>Av. Senador Helvídio Nunes, 2593 - Junco, Picos - PI, 64600-000</p>
+                <button class="avaliar-btn" data-posto="posto-5">Avaliar</button>
+                <div class="avaliacoes">
+                    <h4>Avaliações</h4>
+                    <ul id="avaliacoes-posto-5"></ul>
+                </div>
+            </div>
+            <!-- Adicione mais postos conforme necessário -->
+        </section>
+    </main>
+
+    <div id="avaliacao-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Posto P da Silva</h2>
+            <form class="avaliacao-form" id="avaliacao-form">
+                <input type="text" placeholder="Seu nome" required>
+                <textarea placeholder="Escreva sua avaliação" required></textarea>
+                <div class="stars">
+                    <span data-value="1">&#9733;</span>
+                    <span data-value="2">&#9733;</span>
+                    <span data-value="3">&#9733;</span>
+                    <span data-value="4">&#9733;</span>
+                    <span data-value="5">&#9733;</span>
+                </div>
+                <input type="hidden" name="rating" required>
+                <button type="submit">Enviar Avaliação</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section id="postos">
+            <div class="posto" id="posto-6">
+                <h3>Posto Petrobrás</h3>
+                <img src="posto petrobras.jpg" width="500">
+                <p>Av. Dep. Sá Urtiga, 909 - Centro, Picos - PI, 64600-000</p>
+                <button class="avaliar-btn" data-posto="posto-6">Avaliar</button>
+                <div class="avaliacoes">
+                    <h4>Avaliações</h4>
+                    <ul id="avaliacoes-posto-6"></ul>
+                </div>
+            </div>
+            <!-- Adicione mais postos conforme necessário -->
+        </section>
+    </main>
+
+    <div id="avaliacao-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Posto Petrobrás</h2>
+            <form class="avaliacao-form" id="avaliacao-form">
+                <input type="text" placeholder="Seu nome" required>
+                <textarea placeholder="Escreva sua avaliação" required></textarea>
+                <div class="stars">
+                    <span data-value="1">&#9733;</span>
+                    <span data-value="2">&#9733;</span>
+                    <span data-value="3">&#9733;</span>
+                    <span data-value="4">&#9733;</span>
+                    <span data-value="5">&#9733;</span>
+                </div>
+                <input type="hidden" name="rating" required>
+                <button type="submit">Enviar Avaliação</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section id="postos">
+            <div class="posto" id="posto-7">
+                <h3>Posto Três Corações</h3>
+                <img src="posto tres coracoes.JPG" width="500">
+                <p>R. São Sebastião, 364 - São Sebastiao, Picos - PI, 64600-000</p>
+                <button class="avaliar-btn" data-posto="posto-7">Avaliar</button>
+                <div class="avaliacoes">
+                    <h4>Avaliações</h4>
+                    <ul id="avaliacoes-posto-7"></ul>
+                </div>
+            </div>
+            <!-- Adicione mais postos conforme necessário -->
+        </section>
+    </main>
+
+    <div id="avaliacao-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Posto Três Corações</h2>
+            <form class="avaliacao-form" id="avaliacao-form">
+                <input type="text" placeholder="Seu nome" required>
+                <textarea placeholder="Escreva sua avaliação" required></textarea>
+                <div class="stars">
+                    <span data-value="1">&#9733;</span>
+                    <span data-value="2">&#9733;</span>
+                    <span data-value="3">&#9733;</span>
+                    <span data-value="4">&#9733;</span>
+                    <span data-value="5">&#9733;</span>
+                </div>
+                <input type="hidden" name="rating" required>
+                <button type="submit">Enviar Avaliação</button>
+            </form>
+        </div>
+    </div>
 </body>
 <script>
-// script.js
 document.addEventListener('DOMContentLoaded', function() {
     loadAvaliacoes();
 
@@ -293,7 +436,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function loadAvaliacoes() {
     document.querySelectorAll('.avaliacoes ul').forEach(ul => {
-        const postoId = ul.id.split('-')[2];
+        const postoId = ul.id.split('-')[1];
         const avaliacoes = JSON.parse(localStorage.getItem(postoId) || '[]');
         avaliacoes.forEach(avaliacao => {
             addAvaliacaoToList(ul, avaliacao);
