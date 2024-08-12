@@ -5,7 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posto Seguro</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="inicial.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href='style.css'  rel='stylesheet'>
+    <link href='fonts-icones.css'  rel='stylesheet'>
+    <nav>
+        <div class="navbar">
+          <i class='bx bx-menu'></i>
+          <div class="logo"> 
+            <img src="unnamed2.png" width="100" height="75" alt="">
+        </div>
+          <div class="nav-links">
+            <div class="sidebar-logo">
+              <span class="logo-name">LOGOTIPO</span>
+              <i class='bx bx-x' ></i>
+            </div>
+            <ul class="links">
+              <li><a href="pagina inicial.html">HOME</a></li>
+              <li>
+                <a href="#">CONTA</a>
+                <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+                <ul class="htmlCss-sub-menu sub-menu">
+                  <li><a href="postoseguro/cadastro/loginn/loginn.html">CASDASTRAR-SE</a></li>
+                  <li><a href="postoseguro/cadastro/loginn/cadposto.html">CASDASTRAR POSTO</a></li>
+                  
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">PERTO DE VOCE</a>
+                <i class='bx bxs-chevron-down js-arrow arrow '></i>
+                <ul class="js-sub-menu sub-menu">
+                  <li><a href="tela de avaliação posto.html">POSTOS</a></li>
+                </ul>
+              </li>
+            
+             
+          </div>
+          <div class="search-box">
+            <i class='bx bx-search'></i>
+            <div class="input-box">
+        
+              <input type="text" placeholder="Search...">
+            </div>
+          </div>
+        </div>
+      </nav>
+      <script src="script.js"></script>
     <style>
+
+.w3-sidebar a {font-family: "Roboto", sans-serif}
+body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+       
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
@@ -14,13 +65,7 @@
             padding: 0;
         }
 
-        header {
-            background-color: #b22222;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-
+       
         main {
             padding: 2rem;
         }
@@ -153,15 +198,32 @@
         button:hover {
             background-color: #a02020;
         }
+
+
+        .avaliacoes ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.avaliacoes li {
+    border: 1px solid #b22222;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
     </style>
+    
 </head>
 <body>
-    <header>
-        <h1>Posto Seguro</h1>
-    </header>
+    
     <main>
         <section id="postos">
             <h2>Postos Disponíveis</h2>
+
+            <!-- Posto 1 -->
             <div class="posto" id="posto-1">
                 <h3>Posto Vale do Guaribas</h3>
                 <img src="posto vale do guaribas.jpeg" alt="Posto Vale do Guaribas">
@@ -172,6 +234,19 @@
                     <ul id="avaliacoes-posto-1"></ul>
                 </div>
             </div>
+
+            <!-- Posto 2 -->
+            <div class="posto" id="posto-2">
+                <h3>Posto Central</h3>
+                <img src="posto petrobras.jpg" alt="Posto Central">
+                <p>Rua Central, 123 - Centro, Picos - PI, 64607-000</p>
+                <button class="avaliar-btn" data-posto="posto-2">Avaliar</button>
+                <div class="avaliacoes">
+                    <h4>Avaliações</h4>
+                    <ul id="avaliacoes-posto-2"></ul>
+                </div>
+            </div>
+
             <!-- Adicione mais postos conforme necessário -->
         </section>
     </main>
@@ -181,6 +256,7 @@
             <span class="close-btn">&times;</span>
             <h2>Avaliar Posto</h2>
             <form class="avaliacao-form" id="avaliacao-form">
+                <input type="hidden" id="posto-id">
                 <div class="p-t-31 p-b-9">
                     <span class="txt1">
                         Escreva sua avaliação
@@ -211,7 +287,7 @@
 <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+    import { getDatabase, ref, set, get, onValue } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
@@ -227,15 +303,18 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    // Abrir o modal quando o botão "Avaliar" for clicado
     const avaliarBtns = document.querySelectorAll('.avaliar-btn');
     const modal = document.getElementById('avaliacao-modal');
     const closeModalBtn = document.querySelector('.close-btn');
     const ratingInput = document.getElementById('rating');
     const stars = document.querySelectorAll('.stars span');
+    let postoId = '';
 
+    // Abrir o modal quando o botão "Avaliar" for clicado e salvar o ID do posto
     avaliarBtns.forEach(btn => {
         btn.addEventListener('click', () => {
+            postoId = btn.getAttribute('data-posto');
+            document.getElementById('posto-id').value = postoId;
             modal.style.display = 'block';
         });
     });
@@ -266,22 +345,44 @@
 
         const cnpj = document.getElementById('CNPJ').value;
         const rating = ratingInput.value;
+        const posto = document.getElementById('posto-id').value;
 
         if (!cnpj || !rating) {
             alert('Por favor, preencha todos os campos.');
             return;
         }
 
-        set(ref(db, 'avaliacoes/' + cnpj), {
+        set(ref(db, `avaliacoes/${posto}/${cnpj}`), {
             CNPJ: cnpj,
             rating: rating
         }).then(() => {
             alert("Avaliação enviada com sucesso!");
             modal.style.display = 'none';
+            exibirAvaliacoes(posto);
         }).catch((error) => {
             alert("Erro ao enviar a avaliação: " + error.message);
         });
     });
+
+    // Função para exibir avaliações do Firebase para um posto específico
+    function exibirAvaliacoes(posto) {
+        const avaliacoesRef = ref(db, `avaliacoes/${posto}`);
+        
+        onValue(avaliacoesRef, (snapshot) => {
+            const avaliacoes = snapshot.val();
+            const avaliacoesList = document.getElementById(`avaliacoes-${posto}`);
+            avaliacoesList.innerHTML = ''; // Limpa a lista antes de adicionar novas avaliações
+
+            for (let key in avaliacoes) {
+                const li = document.createElement('li');
+                li.textContent = `AVALIAÇÃO: ${avaliacoes[key].CNPJ}, ${avaliacoes[key].rating} estrelas`;
+                avaliacoesList.appendChild(li);
+            }
+        });
+    }
+
+    // Chama a função ao carregar a página para exibir as avaliações existentes de cada posto
+    ['posto-1', 'posto-2'].forEach(posto => exibirAvaliacoes(posto));
 
 </script>
 </html>
