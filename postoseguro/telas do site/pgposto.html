@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posto Seguro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="inicial.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href='style.css'  rel='stylesheet'>
+    <link href='fonts-icones.css'  rel='stylesheet'>
+    <style>
+        body, h1, h2, h3, h4, h5, h6, .w3-wide { font-family: "Montserrat", sans-serif; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        #postos {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .posto {
+            border: 1px solid #b22222;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        .posto img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .avaliar-btn {
+            background-color: #b22222;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .avaliar-btn:hover {
+            background-color: #a02020;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover, .close-btn:focus {
+            color: #000;
+        }
+
+        .avaliacao-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .avaliacao-form textarea {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+        }
+
+        .stars {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+
+        .stars span {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+
+        .stars span:hover, .stars span.selected {
+            color: #f4b400;
+        }
+
+        .delete-btn {
+            background-color: transparent;
+            color: #b22222;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+
+        .delete-btn:hover {
+            color: #a02020;
+        }
+
+        button {
+            background-color: #b22222;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #a02020;
+        }
+
+        .avaliacoes ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .avaliacoes li {
+            border: 1px solid #b22222;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .avaliacoes .comentario {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .avaliacoes .rating {
+            font-size: 1.2rem;
+            color: #f4b400;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="postos">
+            <h2>Postos Disponíveis</h2>
+
+            <!-- Posto 1 -->
+            <div class="posto" id="posto-1">
+                <h3>Posto Petrobrás</h3>
+                <img src="posto petrobras.jpg" alt="Posto Petrobrás">
+                <p>Av. Piauí, s/n - Junco, Picos - PI, 64607-840</p>
+                <button class="avaliar-btn" data-posto="posto-1">Avaliar</button>
+                <div class="avaliacoes">
+                    <h4>Avaliações</h4>
+                    <ul id="avaliacoes-posto-1"></ul>
+                </div>
+            </div>
+
+            <!-- Adicione mais postos conforme necessário -->
+        </section>
+    </main>
+
+    <!-- Modal de Avaliação -->
+    <div id="avaliacao-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Avaliar Posto</h2>
+            <form class="avaliacao-form" id="avaliacao-form">
+                <input type="hidden" id="posto-id">
+                <div class="p-t-31 p-b-9">
+                    <label for="comentario">Escreva sua avaliação:</label>
+                    <textarea id="comentario" required></textarea>
+                </div>
+                <div class="stars">
+                    <span data-value="1">&#9733;</span>
+                    <span data-value="2">&#9733;</span>
+                    <span data-value="3">&#9733;</span>
+                    <span data-value="4">&#9733;</span>
+                    <span data-value="5">&#9733;</span>
+                </div>
+                <input type="hidden" id="rating" name="rating" required>
+                <div class="container-login100-form-btn m-t-17">
+                    <input class="login100-form-btn" type="submit" value="Enviar" id="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getDatabase, ref, set, get, onValue } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyConLdrumv1bnKLWUJ9k1TKefq2JnAgGe4",
+            authDomain: "posto-seguroo.firebaseapp.com",
+            projectId: "posto-seguroo",
+            storageBucket: "posto-seguroo.appspot.com",
+            messagingSenderId: "131513961836",
+            appId: "1:131513961836:web:911ad6ed23d26ab1b77749"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        const avaliarBtns = document.querySelectorAll('.avaliar-btn');
+        const modal = document.getElementById('avaliacao-modal');
+        const closeModalBtn = document.querySelector('.close-btn');
+        const ratingInput = document.getElementById('rating');
+        const stars = document.querySelectorAll('.stars span');
+        let postoId = '';
+
+        avaliarBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                postoId = btn.getAttribute('data-posto');
+                document.getElementById('posto-id').value = postoId;
+                modal.style.display = 'block';
+            });
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                stars.forEach(s => s.classList.remove('selected'));
+                star.classList.add('selected');
+                ratingInput.value = star.getAttribute('data-value');
+            });
+        });
+
+        document.getElementById('avaliacao-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const comentario = document.getElementById('comentario').value;
+            const rating = ratingInput.value;
+            const posto = document.getElementById('posto-id').value;
+
+            if (!comentario || !rating) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            const CNPJ = "CNPJ_EXEMPLO"; // Aqui você deve pegar o CNPJ de quem está avaliando
+
+            set(ref(db, `avaliacoes/${posto}/${CNPJ}`), {
+                CNPJ: CNPJ,
+                comentario: comentario,
+                rating: rating
+            }).then(() => {
+                alert("Avaliação enviada com sucesso!");
+                modal.style.display = 'none';
+                exibirAvaliacoes(posto);
+            }).catch((error) => {
+                alert("Erro ao enviar a avaliação: " + error.message);
+            });
+        });
+
+        function exibirAvaliacoes(posto) {
+            const avaliacoesRef = ref(db, `avaliacoes/${posto}`);
+            
+            onValue(avaliacoesRef, (snapshot) => {
+                const avaliacoes = snapshot.val();
+                const avaliacoesList = document.getElementById(`avaliacoes-${posto}`);
+                avaliacoesList.innerHTML = '';
+
+                for (let key in avaliacoes) {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <div class="comentario">${avaliacoes[key].comentario}</div>
+                        <div class="rating">${'★'.repeat(avaliacoes[key].rating)}</div>
+                        <div class="CNPJ">Avaliado por: ${avaliacoes[key].CNPJ}</div>
+                    `;
+                    avaliacoesList.appendChild(li);
+                }
+            });
+        }
+
+        ['posto-1'].forEach(posto => exibirAvaliacoes(posto));
+    </script>
+</body>
+</html>

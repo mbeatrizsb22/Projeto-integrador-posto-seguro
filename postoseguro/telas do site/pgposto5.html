@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posto Seguro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="inicial.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href='style.css'  rel='stylesheet'>
+    <link href='fonts-icones.css'  rel='stylesheet'>
+    <nav>
+        <div class="navbar">
+          <i class='bx bx-menu'></i>
+          <div class="logo"> 
+            <img src="unnamed2.png" width="100" height="75" alt="">
+        </div>
+          <div class="nav-links">
+            <div class="sidebar-logo">
+              <span class="logo-name">LOGOTIPO</span>
+              <i class='bx bx-x' ></i>
+            </div>
+            <ul class="links">
+              <li><a href="pagina inicial.html">HOME</a></li>
+              <li>
+                <a href="#">CONTA</a>
+                <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+                <ul class="htmlCss-sub-menu sub-menu">
+                  <li><a href="postoseguro/cadastro/loginn/loginn.html">CASDASTRAR-SE</a></li>
+                  <li><a href="postoseguro/cadastro/loginn/cadposto.html">CASDASTRAR POSTO</a></li>
+                  
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">PERTO DE VOCE</a>
+                <i class='bx bxs-chevron-down js-arrow arrow '></i>
+                <ul class="js-sub-menu sub-menu">
+                  <li><a href="tela de avaliação posto.html">POSTOS</a></li>
+                </ul>
+              </li>
+            
+             
+          </div>
+          <div class="search-box">
+            <i class='bx bx-search'></i>
+            <div class="input-box">
+        
+              <input type="text" placeholder="Search...">
+            </div>
+          </div>
+        </div>
+      </nav>
+      <script src="script.js"></script>
+    <style>
+
+.w3-sidebar a {font-family: "Roboto", sans-serif}
+body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+       
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+       
+        main {
+            padding: 2rem;
+        }
+
+        #postos {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .posto {
+            border: 1px solid #b22222;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        .posto img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .avaliar-btn {
+            background-color: #b22222;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .avaliar-btn:hover {
+            background-color: #a02020;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .avaliacao-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .avaliacao-form input[type="text"],
+        .avaliacao-form textarea {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .stars {
+            display: flex;
+            margin-bottom: 0.5rem;
+        }
+
+        .stars span {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+
+        .stars span:hover,
+        .stars span.selected {
+            color: #b22222;
+        }
+
+        .delete-btn {
+            background-color: transparent;
+            color: #b22222;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+
+        .delete-btn:hover {
+            color: #a02020;
+        }
+
+        button {
+            background-color: #b22222;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #a02020;
+        }
+
+
+        .avaliacoes ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.avaliacoes li {
+    border: 1px solid #b22222;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+    </style>
+    
+</head>
+<body>
+    
+    <main>
+        <section id="postos">
+            
+
+            <!-- Posto 1 -->
+            <div class="posto" id="posto-5">
+                <h3>Posto Mamba</h3>
+                <img src="posto mamba.jpeg" alt="Posto Vale do Guaribas">
+                <p>Av. Senador Helvídio Nunes - Paraibinha, Picos - PI, 64606-245</p>
+                <button class="avaliar-btn" data-posto="posto-5">Avaliar</button>
+                <div class="avaliacoes">
+                    <h4>Avaliações</h4>
+                    <ul id="avaliacoes-posto-5"></ul>
+                </div>
+            </div>
+
+         
+            </div>
+
+            <!-- Adicione mais postos conforme necessário -->
+        </section>
+    </main>
+
+    <div id="avaliacao-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Avaliar Posto</h2>
+            <form class="avaliacao-form" id="avaliacao-form">
+                <input type="hidden" id="posto-id">
+                <div class="p-t-31 p-b-9">
+                    <span class="txt1">
+                        Escreva sua avaliação
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate = "CNPJ is required">
+                    <input class="input100" type="text" value="" id="CNPJ" required>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="stars">
+                    <span data-value="1">&#9733;</span>
+                    <span data-value="2">&#9733;</span>
+                    <span data-value="3">&#9733;</span>
+                    <span data-value="4">&#9733;</span>
+                    <span data-value="5">&#9733;</span>
+                </div>
+                <input type="hidden" id="rating" name="rating" required>
+                <div class="container-login100-form-btn m-t-17">
+                    <input class="login100-form-btn" type="submit" value="Enviar" class="sub" id="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Repita as seções de postos conforme necessário -->
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+    import { getDatabase, ref, set, get, onValue } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyConLdrumv1bnKLWUJ9k1TKefq2JnAgGe4",
+        authDomain: "posto-seguroo.firebaseapp.com",
+        projectId: "posto-seguroo",
+        storageBucket: "posto-seguroo.appspot.com",
+        messagingSenderId: "131513961836",
+        appId: "1:131513961836:web:911ad6ed23d26ab1b77749"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const avaliarBtns = document.querySelectorAll('.avaliar-btn');
+    const modal = document.getElementById('avaliacao-modal');
+    const closeModalBtn = document.querySelector('.close-btn');
+    const ratingInput = document.getElementById('rating');
+    const stars = document.querySelectorAll('.stars span');
+    let postoId = '';
+
+    // Abrir o modal quando o botão "Avaliar" for clicado e salvar o ID do posto
+    avaliarBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            postoId = btn.getAttribute('data-posto');
+            document.getElementById('posto-id').value = postoId;
+            modal.style.display = 'block';
+        });
+    });
+
+    // Fechar o modal
+    closeModalBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Capturar o rating
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            stars.forEach(s => s.classList.remove('selected'));
+            star.classList.add('selected');
+            ratingInput.value = star.getAttribute('data-value');
+        });
+    });
+
+    // Enviar a avaliação para o Firebase
+    document.getElementById('avaliacao-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const cnpj = document.getElementById('CNPJ').value;
+        const rating = ratingInput.value;
+        const posto = document.getElementById('posto-id').value;
+
+        if (!cnpj || !rating) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+
+        set(ref(db, `avaliacoes/${posto}/${cnpj}`), {
+            CNPJ: cnpj,
+            rating: rating
+        }).then(() => {
+            alert("Avaliação enviada com sucesso!");
+            modal.style.display = 'none';
+            exibirAvaliacoes(posto);
+        }).catch((error) => {
+            alert("Erro ao enviar a avaliação: " + error.message);
+        });
+    });
+
+    // Função para exibir avaliações do Firebase para um posto específico
+    function exibirAvaliacoes(posto) {
+        const avaliacoesRef = ref(db, `avaliacoes/${posto}`);
+        
+        onValue(avaliacoesRef, (snapshot) => {
+            const avaliacoes = snapshot.val();
+            const avaliacoesList = document.getElementById(`avaliacoes-${posto}`);
+            avaliacoesList.innerHTML = ''; // Limpa a lista antes de adicionar novas avaliações
+
+            for (let key in avaliacoes) {
+                const li = document.createElement('li');
+                li.textContent = `AVALIAÇÃO: ${avaliacoes[key].CNPJ}, ${avaliacoes[key].rating} estrelas`;
+                avaliacoesList.appendChild(li);
+            }
+        });
+    }
+
+    // Chama a função ao carregar a página para exibir as avaliações existentes de cada posto
+    ['posto-1', 'posto-2', 'posto-3', 'posto-4', 'posto-5', 'posto-6'].forEach(posto => exibirAvaliacoes(posto));
+
+</script>
+</html>
