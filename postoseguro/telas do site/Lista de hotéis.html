@@ -1,49 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lista de Hotéis</title>
-  <link rel="stylesheet" type="text/css" href="lista de hotéis.css">
+  <title>Lista de Postos</title>
+  <link rel="stylesheet" href="lista de hotéis.css">
+  <link rel="stylesheet" href="inicial.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href='style.css'  rel='stylesheet'>
+    <link href='fonts-icones.css'  rel='stylesheet'>
+
 </head>
+<nav>
+  <div class="navbar">
+    <i class='bx bx-menu'></i>
+    <div class="logo"> 
+      <img src="unnamed2.png" width="100" height="75" alt="">
+  </div>
+    <div class="nav-links">
+      <div class="sidebar-logo">
+        <span class="logo-name">LOGOTIPO</span>
+        <i class='bx bx-x' ></i>
+      </div>
+      <ul class="links">
+        <li><a href="pagina inicial.html">HOME</a></li>
+        <li>
+          <a href="#">CONTA</a>
+          <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+          <ul class="htmlCss-sub-menu sub-menu">
+            <li><a href="Cadastro pessoal.html">CASDASTRAR-SE</a></li>
+            <li><a href="cadastrar posto.html">CASDASTRAR POSTO</a></li>
+            
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">PERTO DE VOCE</a>
+          <i class='bx bxs-chevron-down js-arrow arrow '></i>
+          <ul class="js-sub-menu sub-menu">
+            <li><a href="tela de avaliação.html">POSTOS</a></li>
+            <li><a href="tela de avaliação2.html">HOTEIS</a></li>
+      
+          </ul>
+        </li>
+      
+       
+    </div>
+    <div class="search-box">
+      <i class='bx bx-search'></i>
+      <div class="input-box">
+  
+        <input type="text" placeholder="Search...">
+      </div>
+    </div>
+  </div>
+  
+</nav>
 <body>
-  <h1>Lista de Hotéis</h1>
+  <h1>Lista de Postos</h1>
   
   <ul class="hotel-list">
     <li>
-      <img src="ps.webp" alt="Hotel 1">
-      <h2>Pousada Do Sol</h2>
+      <img src="posto petrobras.jpg" height="200" alt="posto petrobras">
+      <h2>Posto Petrobrás</h2>
       
-      <a href="cadastro de reserva hotel.html">Reservar</a>
+      <a href="pgposto.html">Ver mais</a>
     </li>
     <li>
-      <img src="oyo.jpeg" alt="Hotel 2">
-      <h2>OYO Real Palace Hotel</h2>
+      <img src="posto p da silva.jpg" height="200" alt="Hotel 2">
+      <h2>Posto P da Silva</h2>
       
-      <a href="cadastro de reserva hotel.html">Reservar</a>
+      <a href="pgposto2.html">Ver mais</a>
     </li>
     <li>
-      <img src="blue.jpeg" alt="Hotel 3">
-      <h2>Blue Tree Towers Rio Poty</h2>
+      <img src="pipiranga.png" height="200" alt="Hotel 3">
+      <h2>Posto Ipiranga</h2>
       
-      <a href="cadastro de reserva hotel.html">Reservar</a>
+      <a href="pgposto3.html">Ver mais</a>
     </li>
     <li>
-        <img src="22826316.webp" alt="Hotel 2">
-        <h2>Rio Parnaiba</h2>
+        <img src="papainoel.jpg" height="200" alt="Hotel 2">
+        <h2>Shell - Posto Papai Noel</h2>
   
-        <a href="cadastro de reserva hotel.html">Reservar</a>
+        <a href="pgposto4.html">Ver mais</a>
       </li>
       <li>
-        <img src="1637997518.webp" alt="Hotel 2">
-        <h2>Palácio do Rio Hotel</h2>
+        <img src="posto mamba.jpeg" height="200" alt="Hotel 2">
+        <h2>Posto Mamba</h2>
 
-        <a href="cadastro de reserva hotel.html">Reservar</a>
+        <a href="pgposto5.html">Ver mais</a>
       </li>
-      <li>
-        <img src="21777426.webp" alt="Hotel 2">
-        <h2>Portofino</h2>
-
-        <a href="cadastro de reserva hotel.html">Reservar</a>
-      </li>
-  </ul>
+      
 </body>
+<style>body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.hotel-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hotel-list li {
+  width: 300px;
+  background-color: #fff;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-list li img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.hotel-list li h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.hotel-list li p {
+  margin-bottom: 10px;
+}
+
+.hotel-list li a {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #a30606;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.hotel-list li a:hover {
+  background-color: #cc0909;
+}
+</style>
 </html>
