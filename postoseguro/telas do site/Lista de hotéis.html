@@ -1,148 +1,183 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Postos</title>
-  <link rel="stylesheet" href="lista de hotéis.css">
-  <link rel="stylesheet" href="inicial.css">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link href='style.css'  rel='stylesheet'>
-    <link href='fonts-icones.css'  rel='stylesheet'>
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    /* Reset e estilo básico */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
 
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #a30606;
+      padding: 15px 20px;
+      color: #fff;
+    }
+
+    .navbar .logo img {
+      width: 100px;
+      height: 75px;
+    }
+
+    .nav-links ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links ul li {
+      margin: 0 15px;
+    }
+
+    .nav-links ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .nav-links ul li a:hover {
+      color: #ffe6e6;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      border: 1px solid #fff;
+      border-radius: 20px;
+      padding: 5px 15px;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .search-box input:focus {
+      border-color: #ffcccc;
+    }
+
+    /* Título */
+    h1 {
+      text-align: center;
+      color: #a30606;
+      font-size: 2.5em;
+      margin: 20px 0;
+    }
+
+    /* Lista de postos */
+    .hotel-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 10px;
+      list-style: none;
+    }
+
+    .hotel-list li {
+      width: 300px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .hotel-list li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .hotel-list li img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .hotel-list li h2 {
+      font-size: 1.2em;
+      color: #333;
+      margin: 10px 15px;
+    }
+
+    .hotel-list li a {
+      display: block;
+      text-align: center;
+      margin: 15px;
+      padding: 10px;
+      background-color: #a30606;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .hotel-list li a:hover {
+      background-color: #cc0909;
+    }
+  </style>
 </head>
-<nav>
-  <div class="navbar">
-    <i class='bx bx-menu'></i>
-    <div class="logo"> 
-      <img src="unnamed2.png" width="100" height="75" alt="">
-  </div>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="unnamed2.png" alt="Logo">
+    </div>
     <div class="nav-links">
-      <div class="sidebar-logo">
-        <span class="logo-name">LOGOTIPO</span>
-        <i class='bx bx-x' ></i>
-      </div>
-      <ul class="links">
+      <ul>
         <li><a href="pagina inicial.html">HOME</a></li>
-        <li>
-          <a href="#">CONTA</a>
-          <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
-          <ul class="htmlCss-sub-menu sub-menu">
-            <li><a href="Cadastro pessoal.html">CASDASTRAR-SE</a></li>
-            <li><a href="cadastrar posto.html">CASDASTRAR POSTO</a></li>
-            
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">PERTO DE VOCE</a>
-          <i class='bx bxs-chevron-down js-arrow arrow '></i>
-          <ul class="js-sub-menu sub-menu">
-            <li><a href="tela de avaliação.html">POSTOS</a></li>
-            <li><a href="tela de avaliação2.html">HOTEIS</a></li>
-      
-          </ul>
-        </li>
-      
-       
+        <li><a href="Cadastro pessoal.html">CADASTRAR-SE</a></li>
+        <li><a href="cadastrar posto.html">POSTOS</a></li>
+        <li><a href="tela de avaliação.html">AVALIAÇÕES</a></li>
+      </ul>
     </div>
     <div class="search-box">
-      <i class='bx bx-search'></i>
-      <div class="input-box">
-  
-        <input type="text" placeholder="Search...">
-      </div>
+      <input type="text" placeholder="Pesquisar...">
     </div>
-  </div>
-  
-</nav>
-<body>
+  </nav>
+
+  <!-- Título -->
   <h1>Lista de Postos</h1>
-  
+
+  <!-- Lista de Postos -->
   <ul class="hotel-list">
     <li>
-      <img src="posto petrobras.jpg" height="200" alt="posto petrobras">
+      <img src="posto petrobras.jpg" alt="Posto Petrobrás">
       <h2>Posto Petrobrás</h2>
-      
       <a href="pgposto.html">Ver mais</a>
     </li>
     <li>
-      <img src="posto p da silva.jpg" height="200" alt="Hotel 2">
+      <img src="posto p da silva.jpg" alt="Posto P da Silva">
       <h2>Posto P da Silva</h2>
-      
       <a href="pgposto2.html">Ver mais</a>
     </li>
     <li>
-      <img src="pipiranga.png" height="200" alt="Hotel 3">
+      <img src="pipiranga.png" alt="Posto Ipiranga">
       <h2>Posto Ipiranga</h2>
-      
       <a href="pgposto3.html">Ver mais</a>
     </li>
     <li>
-        <img src="papainoel.jpg" height="200" alt="Hotel 2">
-        <h2>Shell - Posto Papai Noel</h2>
-  
-        <a href="pgposto4.html">Ver mais</a>
-      </li>
-      <li>
-        <img src="posto mamba.jpeg" height="200" alt="Hotel 2">
-        <h2>Posto Mamba</h2>
-
-        <a href="pgposto5.html">Ver mais</a>
-      </li>
-      
+      <img src="papainoel.jpg" alt="Shell - Posto Papai Noel">
+      <h2>Shell - Posto Papai Noel</h2>
+      <a href="pgposto4.html">Ver mais</a>
+    </li>
+    <li>
+      <img src="posto mamba.jpeg" alt="Posto Mamba">
+      <h2>Posto Mamba</h2>
+      <a href="pgposto5.html">Ver mais</a>
+    </li>
+  </ul>
 </body>
-<style>body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  padding: 20px;
-}
-
-h1 {
-  text-align: center;
-}
-
-.hotel-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.hotel-list li {
-  width: 300px;
-  background-color: #fff;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.hotel-list li img {
-  width: 100%;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.hotel-list li h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.hotel-list li p {
-  margin-bottom: 10px;
-}
-
-.hotel-list li a {
-  display: inline-block;
-  padding: 8px 16px;
-  background-color: #a30606;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.hotel-list li a:hover {
-  background-color: #cc0909;
-}
-</style>
 </html>
