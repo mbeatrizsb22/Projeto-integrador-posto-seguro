@@ -6,15 +6,12 @@
   <title>Lista de Postos</title>
   <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
   <style>
-    /* Reset e estilo básico */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f9f9f9;
     }
-
-    /* Navbar */
     .navbar {
       display: flex;
       align-items: center;
@@ -23,39 +20,32 @@
       padding: 15px 20px;
       color: #fff;
     }
-
     .navbar .logo img {
       width: 100px;
       height: 75px;
     }
-
     .nav-links ul {
       display: flex;
       list-style: none;
       margin: 0;
       padding: 0;
     }
-
     .nav-links ul li {
       margin: 0 15px;
     }
-
     .nav-links ul li a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
     }
-
     .nav-links ul li a:hover {
       color: #ffe6e6;
     }
-
     .search-box {
       display: flex;
       align-items: center;
     }
-
     .search-box input {
       border: 1px solid #fff;
       border-radius: 20px;
@@ -63,20 +53,15 @@
       outline: none;
       transition: all 0.3s;
     }
-
     .search-box input:focus {
       border-color: #ffcccc;
     }
-
-    /* Título */
     h1 {
       text-align: center;
       color: #a30606;
       font-size: 2.5em;
       margin: 20px 0;
     }
-
-    /* Lista de postos */
     .hotel-list {
       display: flex;
       flex-wrap: wrap;
@@ -85,33 +70,29 @@
       padding: 0 10px;
       list-style: none;
     }
-
     .hotel-list li {
       width: 300px;
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       overflow: hidden;
+      position: relative;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-
     .hotel-list li:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     }
-
     .hotel-list li img {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
-
     .hotel-list li h2 {
       font-size: 1.2em;
       color: #333;
       margin: 10px 15px;
     }
-
     .hotel-list li a {
       display: block;
       text-align: center;
@@ -123,14 +104,24 @@
       border-radius: 5px;
       transition: background-color 0.3s;
     }
-
     .hotel-list li a:hover {
       background-color: #cc0909;
+    }
+    .rating {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5em;
+      color: gold;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 5px 10px;
+      border-radius: 5px;
+      z-index: 2;
     }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
+
   <nav class="navbar">
     <div class="logo">
       <img src="unnamed2.png" alt="Logo">
@@ -148,36 +139,80 @@
     </div>
   </nav>
 
-  <!-- Título -->
   <h1>Lista de Postos</h1>
 
-  <!-- Lista de Postos -->
-  <ul class="hotel-list">
-    <li>
+  <ul class="hotel-list" id="posto-list">
+    <li id="posto1">
       <img src="posto petrobras.jpg" alt="Posto Petrobrás">
       <h2>Posto Petrobrás</h2>
+      <div class="rating" id="rating1">Carregando avaliação...</div>
       <a href="pgposto.html">Ver mais</a>
     </li>
-    <li>
+    <li id="posto2">
       <img src="posto p da silva.jpg" alt="Posto P da Silva">
       <h2>Posto P da Silva</h2>
+      <div class="rating" id="rating2">Carregando avaliação...</div>
       <a href="pgposto2.html">Ver mais</a>
     </li>
-    <li>
+    <li id="posto3">
       <img src="pipiranga.png" alt="Posto Ipiranga">
       <h2>Posto Ipiranga</h2>
+      <div class="rating" id="rating3">Carregando avaliação...</div>
       <a href="pgposto3.html">Ver mais</a>
     </li>
-    <li>
+    <li id="posto4">
       <img src="papainoel.jpg" alt="Shell - Posto Papai Noel">
       <h2>Shell - Posto Papai Noel</h2>
+      <div class="rating" id="rating4">Carregando avaliação...</div>
       <a href="pgposto4.html">Ver mais</a>
     </li>
-    <li>
+    <li id="posto5">
       <img src="posto mamba.jpeg" alt="Posto Mamba">
       <h2>Posto Mamba</h2>
+      <div class="rating" id="rating5">Carregando avaliação...</div>
       <a href="pgposto5.html">Ver mais</a>
     </li>
   </ul>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+    import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyConLdrumv1bnKLWUJ9k1TKefq2JnAgGe4",
+      authDomain: "posto-seguroo.firebaseapp.com",
+      projectId: "posto-seguroo",
+      storageBucket: "posto-seguroo.appspot.com",
+      messagingSenderId: "131513961836",
+      appId: "1:131513961836:web:911ad6ed23d26ab1b77749"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // Função para calcular a média de avaliações
+    function calcularMediaAvaliacao(avaliacoes) {
+      const totalAvaliacoes = Object.values(avaliacoes).reduce((sum, aval) => sum + parseFloat(aval.rating), 0);
+      const quantidadeAvaliacoes = Object.values(avaliacoes).length;
+      return quantidadeAvaliacoes > 0 ? (totalAvaliacoes / quantidadeAvaliacoes).toFixed(1) : 0;
+    }
+
+    // Função para exibir avaliações
+    function exibirAvaliacoes() {
+      const postosRef = ref(db, 'avaliacoes');
+      onValue(postosRef, (snapshot) => {
+        const postos = snapshot.val();
+        Object.keys(postos).forEach((postoId, index) => {
+          const posto = postos[postoId];
+          const mediaAvaliacoes = calcularMediaAvaliacao(posto);
+          document.getElementById(`rating${index + 1}`).innerText = `${mediaAvaliacoes} ★`;
+        });
+      });
+    }
+
+    // Chama a função para exibir as médias ao carregar a página
+    exibirAvaliacoes();
+  </script>
+
 </body>
 </html>
